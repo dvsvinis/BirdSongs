@@ -1,0 +1,30 @@
+
+spring:
+  profiles: local
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform:
+    url: jdbc:mysql://localhost:3306/Birdsong
+    username: root
+    password: password
+    driverClassName:
+
+---
+spring:
+  profiles: dev
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform:
+    url:
+    username:
+    password:
+    driverClassName:
+

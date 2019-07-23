@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("api/v1")
+//@RequestMapping("api/v1")
 public class BirdController {
 
     private BirdRepository birdRepository;
@@ -38,7 +38,7 @@ public class BirdController {
     public ResponseEntity<Bird> getBirdById(@PathVariable(value = "id") Long birdId)
             throws ResourceNotFoundException {
         Bird bird = birdRepository.findById(birdId)
-                .orElseThrow(() -> new ResourceNotFoundException("Bird + not found for this id :: " + birdId));
+                .orElseThrow(() -> new ResourceNotFoundException("Bird not found for this id :: " + birdId));
         return ResponseEntity.ok().body(bird);
     }
 
@@ -48,8 +48,7 @@ public class BirdController {
     }
 
     @PutMapping("/birds/{id}")
-    public ResponseEntity<Bird> updateBird(@PathVariable(value = "id") Long birdId,
-                                                   @Valid @RequestBody Bird birdDetails) throws ResourceNotFoundException {
+    public ResponseEntity<Bird> updateBird(@PathVariable(value = "id") Long birdId, @Valid @RequestBody Bird birdDetails) throws ResourceNotFoundException {
         Bird bird = birdRepository.findById(birdId)
                 .orElseThrow(() -> new ResourceNotFoundException("Bird not found for this id :: " + birdId));
 
@@ -64,7 +63,7 @@ public class BirdController {
     public Map<String, Boolean> deleteBird(@PathVariable(value = "id") Long birdId)
             throws ResourceNotFoundException {
         Bird bird = birdRepository.findById(birdId)
-                .orElseThrow(() -> new ResourceNotFoundException("Bird + not found for this id :: " + birdId));
+                .orElseThrow(() -> new ResourceNotFoundException("Bird not found for this id :: " + birdId));
 
         birdRepository.delete(bird);
         Map<String, Boolean> response = new HashMap<>();

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-//@RequestMapping({"/birds"})
+@RequestMapping({"/"})
 public class BirdController {
 
     private BirdService birdService;
@@ -34,14 +34,24 @@ public class BirdController {
         this.birdRepository = birdRepository;
     }
 
-    @GetMapping("/birds")
-    public List<Bird> getBirds() {
+    @GetMapping("/birdlist")
+    public List<Bird> getBirdList() {
         return (List<Bird>) birdRepository.findAll();
+    }
+
+    @RequestMapping(value = "birds/{id}", method = RequestMethod.GET)
+    public Bird getBird (@PathVariable Long id) {
+        return birdRepository.getOne(id);
     }
 
     @PostMapping("/birds")
     void addBird(@RequestBody Bird bird) {
         birdRepository.save(bird);
+    }
+
+    @GetMapping("/birds")
+    public List<Bird> getBirds() {
+        return (List<Bird>) birdRepository.findAll();
     }
 
     @DeleteMapping(value = "birds/{id}")

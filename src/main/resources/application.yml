@@ -5,7 +5,7 @@ spring:
     database: mysql
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
   datasource:
     platform:
     url: jdbc:mysql://localhost:3306/Birdsong
@@ -13,18 +13,18 @@ spring:
     password: password
     driverClassName:
 
----
+---birdsongsserver
 spring:
   profiles: dev
   jpa:
     database: mysql
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
   datasource:
     platform:
-    url:
-    username:
-    password:
+    url: mysql://p9jkonwjbro1qxu7:a0shiuoe7vz2snmx@c584md9egjnm02sk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/e1q3w0a9lp9z2xs9
+    username: p9jkonwjbro1qxu7
+    password: a0shiuoe7vz2snmx
     driverClassName:
 

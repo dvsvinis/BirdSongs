@@ -13,7 +13,7 @@ spring:
     password: password
     driverClassName:
 
----birdsongsserver
+---
 spring:
   profiles: dev
   jpa:
